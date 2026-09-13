@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { NavigationProvider, useNav } from './context/NavigationContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { LogoLoader } from './components/LogoLoader';
 import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { UPS } from './pages/UPS';
@@ -34,6 +36,23 @@ function PageContent() {
 }
 
 export default function App() {
+  const [showLoader, setShowLoader] = useState(() => {
+    try {
+      return sessionStorage.getItem('ivolt-loader-seen') !== 'true';
+    } catch {
+      return true;
+    }
+  });
+
+  const completeLoading = () => {
+    try {
+      sessionStorage.setItem('ivolt-loader-seen', 'true');
+    } catch {
+      // Continue normally when storage is unavailable.
+    }
+    setShowLoader(false);
+  };
+
   return (
     <NavigationProvider>
       <div className="flex flex-col min-h-screen bg-white">
@@ -43,6 +62,7 @@ export default function App() {
         </main>
         <Footer />
       </div>
+      {showLoader && <LogoLoader onComplete={completeLoading} />}
     </NavigationProvider>
   );
 }
