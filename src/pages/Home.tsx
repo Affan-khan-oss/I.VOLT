@@ -100,42 +100,6 @@ const features = [
       </svg>
     ),
   },
-  {
-    title: 'Pan-India Service',
-    desc: 'Authorised service centres and field engineers in 500+ cities and towns.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-  },
-];
-
-const testimonials = [
-  {
-    name: 'Ramesh Kumar',
-    role: 'IT Manager, TechServe Solutions',
-    location: 'Bengaluru',
-    rating: 5,
-    text: "We deployed I.VOLT 6KVA online UPS units across our server room eight months ago. Zero downtime since. The support team responded within 2 hours when we had a query. Absolutely reliable.",
-    avatar: 'RK',
-  },
-  {
-    name: 'Priya Sharma',
-    role: 'Homeowner',
-    location: 'Noida, UP',
-    rating: 5,
-    text: "Switched to an I.VOLT 1500VA inverter with their 150Ah tubular battery last year. The battery charges quickly and gives us 6+ hours of backup. Best investment for our home.",
-    avatar: 'PS',
-  },
-  {
-    name: 'Vinod Reddy',
-    role: 'Owner, Vinod Electronics',
-    location: 'Hyderabad',
-    rating: 5,
-    text: "Installed their 5KW solar combo kit for my shop. Electricity bills dropped by ₹8,000/month. The installation team was professional and the after-sales support is excellent.",
-    avatar: 'VR',
-  },
 ];
 
 const stats = [
@@ -167,10 +131,21 @@ export function Home() {
 
             <h1
               className="font-black text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] mb-6"
-              style={{ fontFamily: 'Outfit, sans-serif' }}
+              style={{
+                fontFamily: 'Outfit, sans-serif',
+                textShadow: '1px 1px 0 #d9e0e8, 2px 2px 0 #c0c9d4, 3px 3px 0 #a6b0bd, 4px 4px 0 #8b96a4, 5px 5px 0 #27344a, 6px 6px 0 #111827',
+              }}
             >
               Power That <br />
-              <span className="text-[#F5C518]">Never</span> Stops
+              <span
+                className="text-[#F5C518]"
+                style={{
+                  textShadow: '1px 1px 0 #d9a900, 2px 2px 0 #bd9200, 3px 3px 0 #a17b00, 4px 4px 0 #765d08, 5px 5px 0 #27344a, 6px 6px 0 #111827',
+                }}
+              >
+                Never
+              </span>{' '}
+              Stops
             </h1>
 
             <p className="text-[#94A3B8] text-lg leading-relaxed mb-10 max-w-lg">
@@ -294,11 +269,11 @@ export function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-5xl mx-auto">
             {features.map((feat) => (
               <div
                 key={feat.title}
-                className="bg-white rounded-2xl p-7 border border-[#E2E8F0] hover:shadow-lg hover:border-[#F5C518]/40 transition-all duration-300 group"
+                className="w-full max-w-[290px] bg-white rounded-2xl p-7 border border-[#E2E8F0] hover:shadow-lg hover:border-[#F5C518]/40 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#0B1D3A] group-hover:bg-[#F5C518] flex items-center justify-center text-[#F5C518] group-hover:text-[#0B1D3A] mb-5 transition-all duration-300">
                   {feat.icon}
@@ -353,50 +328,6 @@ export function Home() {
             >
               View All Products
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-[#F7F9FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2
-              className="text-3xl sm:text-4xl font-bold text-[#0B1D3A] mb-3"
-              style={{ fontFamily: 'Outfit, sans-serif' }}
-            >
-              What Our Customers Say
-            </h2>
-            <p className="text-[#64748B] text-base">Real stories from homes and businesses powered by I.VOLT.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white rounded-2xl p-7 border border-[#E2E8F0] hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-[#F5C518]" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-
-                <p className="text-[#374151] text-sm leading-relaxed mb-6 italic">"{t.text}"</p>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#0B1D3A] flex items-center justify-center text-white text-xs font-bold">
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-[#0B1D3A] text-sm">{t.name}</div>
-                    <div className="text-[#64748B] text-xs">{t.role} · {t.location}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

@@ -20,7 +20,7 @@ export function Contact() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
-      value: 'Plot 42, Industrial Area Phase II\nChandigarh – 160002, India',
+      value: 'Q74P+MGF, Loni Dehat\nUttar Pradesh, India',
     },
     {
       label: 'Phone',
@@ -29,8 +29,8 @@ export function Contact() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       ),
-      value: '+91 98765 43210\n+91 98765 43211 (Sales)',
-      href: 'tel:+919876543210',
+      value: '+91 9212676908, +91 9313918171 (Sales)',
+      href: 'tel:+919212676908',
     },
     {
       label: 'Email',
@@ -39,8 +39,8 @@ export function Contact() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       ),
-      value: 'info@ivolt.in\nsupport@ivolt.in',
-      href: 'mailto:info@ivolt.in',
+      value: 'i.volt92@gmail.com',
+      href: 'mailto:i.volt92@gmail.com',
     },
     {
       label: 'Business Hours',
@@ -195,54 +195,31 @@ export function Contact() {
               ))}
             </div>
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <div className="bg-[#F1F5F9] rounded-2xl overflow-hidden border border-[#E2E8F0] aspect-video relative">
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <div className="w-12 h-12 bg-[#0B1D3A] rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#F5C518]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div className="text-center">
-                  <p className="font-semibold text-[#0B1D3A] text-sm">Industrial Area Phase II</p>
-                  <p className="text-[#64748B] text-xs">Chandigarh – 160002</p>
+              <iframe
+                title="I.VOLT location in Loni Dehat, Uttar Pradesh"
+                src="https://www.google.com/maps?q=28.756676,77.286290&z=17&output=embed"
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-lg bg-white/95 px-3 py-2 shadow-sm">
+                <div>
+                  <p className="font-semibold text-[#0B1D3A] text-xs">Loni Dehat</p>
+                  <p className="text-[#64748B] text-[11px]">Uttar Pradesh · 28.756676, 77.286290</p>
                 </div>
                 <a
-                  href="https://maps.google.com"
+                  href="https://maps.app.goo.gl/TA8ZkhfyMA5EAdgc6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-[#0B1D3A] text-white text-xs font-semibold rounded-lg hover:bg-[#162B4D] transition-colors"
+                  className="shrink-0 px-3 py-2 bg-[#0B1D3A] text-white text-xs font-semibold rounded-lg hover:bg-[#162B4D] transition-colors"
                 >
-                  View on Google Maps →
+                  Open Map
                 </a>
               </div>
-              {/* Decorative grid lines */}
-              <svg className="w-full h-full opacity-20" viewBox="0 0 400 250">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <line key={`h${i}`} x1="0" y1={i * 35} x2="400" y2={i * 35} stroke="#94A3B8" strokeWidth="0.5" />
-                ))}
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <line key={`v${i}`} x1={i * 35} y1="0" x2={i * 35} y2="250" stroke="#94A3B8" strokeWidth="0.5" />
-                ))}
-              </svg>
             </div>
 
-            {/* Social Links */}
-            <div className="mt-6">
-              <p className="text-sm font-medium text-[#0B1D3A] mb-3">Follow Us</p>
-              <div className="flex gap-3">
-                {['LinkedIn', 'Facebook', 'Instagram', 'YouTube'].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="px-4 py-2 border border-[#E2E8F0] rounded-xl text-sm text-[#64748B] hover:border-[#0B1D3A] hover:text-[#0B1D3A] hover:bg-[#F7F9FC] transition-all duration-200"
-                  >
-                    {social}
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>

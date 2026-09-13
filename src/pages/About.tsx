@@ -3,15 +3,6 @@ import { useNav } from '../context/NavigationContext';
 export function About() {
   const { navigate } = useNav();
 
-  const milestones = [
-    { year: '2009', event: 'I.VOLT founded in Chandigarh with a team of 8 power engineers' },
-    { year: '2012', event: 'Launched first proprietary UPS product line; reached 10,000 units sold' },
-    { year: '2015', event: 'Expanded to 15 states with authorised service centres' },
-    { year: '2018', event: 'Introduced solar product range and pan-India installation network' },
-    { year: '2021', event: 'Crossed 50,000 satisfied customers; ISO 9001:2015 certified' },
-    { year: '2024', event: 'Present in 28 states, 500+ service centres, 100+ product SKUs' },
-  ];
-
   const values = [
     {
       title: 'Reliability',
@@ -129,33 +120,6 @@ export function About() {
                 <p className="text-[#64748B] text-sm leading-relaxed">{v.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#0B1D3A] mb-10 text-center" style={{ fontFamily: 'Outfit, sans-serif' }}>
-            Our Journey
-          </h2>
-          <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-[#E2E8F0]" />
-            <div className="space-y-8">
-              {milestones.map((m, i) => (
-                <div key={m.year} className="flex items-start gap-6 relative">
-                  <div className="w-16 h-16 rounded-2xl bg-[#0B1D3A] flex items-center justify-center text-[#F5C518] font-black text-xs shrink-0 relative z-10" style={{ fontFamily: 'Outfit, sans-serif' }}>
-                    {m.year}
-                  </div>
-                  <div className="pt-3 pb-6">
-                    <p className="text-[#374151] text-sm leading-relaxed">{m.event}</p>
-                    {i < milestones.length - 1 && (
-                      <div className="mt-6 w-full h-px bg-[#F1F5F9]" />
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
