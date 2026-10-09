@@ -1,0 +1,10 @@
+{
+  "description": "Offers a clean, interactive platform for browsing and purchasing power solutions including UPS, inverters, batteries, solar products, and accessories.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
