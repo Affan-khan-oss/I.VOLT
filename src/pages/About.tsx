@@ -55,7 +55,7 @@ export function About() {
             About I.VOLT
           </h1>
           <p className="text-[#94A3B8] max-w-xl">
-            15 years of keeping India powered — our story, mission, and commitment to you.
+            15 years of keeping India powered our story, mission, and commitment to you.
           </p>
         </div>
       </div>
