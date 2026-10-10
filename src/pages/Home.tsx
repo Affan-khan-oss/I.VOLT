@@ -149,7 +149,7 @@ export function Home() {
             </h1>
 
             <p className="text-[#94A3B8] text-lg leading-relaxed mb-10 max-w-lg">
-              Intelligent UPS systems, pure sine wave inverters, solar solutions, and long-life batteries — keeping homes and enterprises across India powered through every outage.
+              Intelligent UPS systems, pure sine wave inverters, solar solutions, and long-life batteries keeping homes and enterprises across India powered through every outage.
             </p>
 
             <div className="flex flex-wrap gap-4">

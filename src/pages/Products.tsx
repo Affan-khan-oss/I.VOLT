@@ -63,7 +63,7 @@ export function Products() {
             All Products
           </h1>
           <p className="text-[#94A3B8]">
-            {filtered.length} products — find the right power solution for your needs.
+            {filtered.length} products found. Find the right power solution for your needs.
           </p>
         </div>
       </div>

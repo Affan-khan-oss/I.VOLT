@@ -32,7 +32,7 @@ export function Batteries() {
             Batteries
           </h1>
           <p className="text-[#94A3B8] max-w-xl">
-            Long-life tubular and flat plate batteries engineered for India's power conditions — deep discharge tolerant, with multi-year warranties.
+            Long-life tubular and flat plate batteries engineered for India's power conditions deep discharge tolerant, with multi-year warranties.
           </p>
         </div>
       </div>

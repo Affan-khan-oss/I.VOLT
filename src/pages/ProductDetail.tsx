@@ -138,7 +138,7 @@ export function ProductDetail() {
                     Price on Enquiry
                   </div>
                   <p className="text-[#64748B] text-sm mt-1">
-                    Tell us your requirement — we reply on WhatsApp.
+                    Tell us your requirement and we reply on WhatsApp.
                   </p>
                 </>
               )}

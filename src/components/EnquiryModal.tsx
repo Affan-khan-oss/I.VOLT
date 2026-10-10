@@ -268,7 +268,7 @@ export function EnquiryModal({ product, onClose }: EnquiryModalProps) {
               Enquiry Ready!
             </h3>
             <p className="text-[#64748B] text-sm mb-1">
-              Thanks {form.name.trim() || 'there'} — WhatsApp opened with your enquiry
+              Thanks {form.name.trim() || 'there'}! WhatsApp opened with your enquiry
               for:
             </p>
             <p className="text-[#0B1D3A] text-sm font-semibold mb-5">{product.name}</p>

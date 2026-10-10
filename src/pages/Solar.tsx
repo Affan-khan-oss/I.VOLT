@@ -135,7 +135,7 @@ export function Solar() {
             Free Solar Site Assessment
           </h3>
           <p className="text-[#94A3B8] text-sm mb-6 max-w-md mx-auto">
-            Our solar engineers will visit your site, assess your roof area and power consumption, and provide a custom proposal — free of charge.
+            Our solar engineers will visit your site, assess your roof area and power consumption, and provide a custom proposal free of charge.
           </p>
           <button
             onClick={() => navigate('contact')}

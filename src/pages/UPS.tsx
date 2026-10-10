@@ -59,7 +59,7 @@ export function UPS() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           <div className="bg-[#F0F7FF] border border-blue-200 rounded-2xl p-5">
             <div className="font-semibold text-[#0B1D3A] mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>Online UPS</div>
-            <p className="text-[#64748B] text-sm">Double-conversion technology. Continuous clean power — ideal for servers, medical equipment, and sensitive electronics. Zero transfer time.</p>
+            <p className="text-[#64748B] text-sm">Double-conversion technology. Continuous clean power ideal for servers, medical equipment, and sensitive electronics. Zero transfer time.</p>
           </div>
           <div className="bg-[#FFFBEA] border border-yellow-200 rounded-2xl p-5">
             <div className="font-semibold text-[#0B1D3A] mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>Offline UPS</div>

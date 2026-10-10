@@ -24,7 +24,7 @@ export function Refurbished() {
             Refurbished Products
           </h1>
           <p className="text-[#94A3B8] max-w-xl">
-            Certified refurbished UPS, inverters, and batteries — factory-tested and backed by an I.VOLT warranty. Same reliability, smarter price.
+            Certified refurbished UPS, inverters, and batteries factory-tested and backed by an I.VOLT warranty. Same reliability, smarter price.
           </p>
         </div>
       </div>

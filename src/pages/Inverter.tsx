@@ -26,7 +26,7 @@ export function Inverter() {
             Inverters
           </h1>
           <p className="text-[#94A3B8] max-w-xl">
-            Pure sine wave inverters delivering stable, clean power for every home and business load — from basics to heavy-duty.
+            Pure sine wave inverters delivering stable, clean power for every home and business load from basics to heavy-duty.
           </p>
         </div>
       </div>
