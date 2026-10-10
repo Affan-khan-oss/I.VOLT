@@ -3,6 +3,7 @@ import { NavigationProvider, useNav } from './context/NavigationContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { LogoLoader } from './components/LogoLoader';
+import { Chatbot } from './components/Chatbot';
 import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { UPS } from './pages/UPS';
@@ -62,6 +63,7 @@ export default function App() {
         </main>
         <Footer />
       </div>
+      <Chatbot />
       {showLoader && <LogoLoader onComplete={completeLoading} />}
     </NavigationProvider>
   );

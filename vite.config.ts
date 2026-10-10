@@ -1,4 +1,4 @@
-import { defineConfig, type HtmlTagDescriptor, type Plugin } from 'vite'
+import { defineConfig, loadEnv, type HtmlTagDescriptor, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
       figmaErrorOverlayReplay(),
       figmaReactRefreshBoundaryFallback(),
       figmaMakeKitPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
+      chatApiPlugin(),
     ],
     resolve: {
       alias: {
@@ -69,9 +70,85 @@ type FigmaSiteConfiguration = {
   }
 }
 
+/**
+ * Dev-only: route POST /api/chat to the same handler as the Vercel function
+ * (api/chat.ts), so `pnpm dev` works without deploying. Loads .env.local on
+ * the server side only (loadEnv with an empty prefix) and never exposes the
+ * key to the client bundle.
+ */
+function chatApiPlugin(): Plugin {
+  return {
+    name: 'ivolt-chat-api',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        try {
+          const url = (req.url ?? '').split('?')[0];
+          if (url !== '/api/chat') return next();
+          if (req.method !== 'POST') {
+            res.statusCode = 405;
+            res.setHeader('Allow', 'POST');
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ error: 'Only POST requests are allowed.' }));
+            return;
+          }
+
+          const env = loadEnv(server.config.mode, process.cwd(), '');
+          if (!process.env.GROQ_API_KEY && env.GROQ_API_KEY) {
+            process.env.GROQ_API_KEY = env.GROQ_API_KEY;
+          }
+
+          const chunks: Buffer[] = [];
+          for await (const chunk of req) {
+            chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : (chunk as Buffer));
+          }
+          const raw = Buffer.concat(chunks).toString('utf8');
+          let body: unknown = {};
+          if (raw) {
+            try {
+              body = JSON.parse(raw);
+            } catch {
+              body = {};
+            }
+          }
+
+          const mod = await server.ssrLoadModule('/api/chat.ts');
+          const handler = (mod as { default: (a: unknown, b: unknown) => Promise<void> })
+            .default;
+          if (typeof handler !== 'function') return next();
+
+          let statusCode = 200;
+          const resAdapter = {
+            status(code: number) {
+              statusCode = code;
+              return resAdapter;
+            },
+            json(obj: unknown) {
+              res.statusCode = statusCode;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify(obj));
+            },
+            setHeader(name: string, value: string) {
+              res.setHeader(name, value);
+            },
+          };
+          const reqAdapter = {
+            method: req.method,
+            headers: req.headers,
+            body,
+            socket: req.socket,
+          };
+          await handler(reqAdapter, resAdapter);
+        } catch (err) {
+          next(err as Error);
+        }
+      });
+    },
+  }
+}
+
 /** Applies /.figma/make/site.json to the generated document shell. */
-function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
-  function sanitizeHtmlValue(value: string | undefined): string {
+function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {  function sanitizeHtmlValue(value: string | undefined): string {
     return value?.replace(/[^a-zA-Z0-9_-]/g, '') || ''
   }
   function escapeHtmlText(value: string): string {

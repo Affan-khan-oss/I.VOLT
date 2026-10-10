@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNav, type PageId } from '../context/NavigationContext';
 import { ProductCard } from '../components/ProductCard';
+import { EnquiryModal } from '../components/EnquiryModal';
 import { getById, getRelated, categoryLabels } from '../data/products';
 import type { Product, Spec } from '../data/products';
 
@@ -71,7 +72,17 @@ export function ProductDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Product image */}
           <div className="relative aspect-[4/3] bg-[#F1F5F9] rounded-2xl overflow-hidden border border-[#E2E8F0]">
-            <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+            <img
+              src={product.image}
+              alt={product.name}
+              onError={(e) => {
+                const t = e.currentTarget;
+                if (!t.src.endsWith('/images/products/placeholder.svg')) {
+                  t.src = '/images/products/placeholder.svg';
+                }
+              }}
+              className="w-full h-full object-cover"
+            />
             {product.badge && (
               <span className="absolute top-4 left-4 bg-[#F5C518] text-[#0B1D3A] text-xs font-bold px-2.5 py-1 rounded-full">
                 {product.badge}
@@ -89,27 +100,47 @@ export function ProductDetail() {
             <span className="inline-block bg-[#FFFBEA] border border-yellow-200 text-[#0B1D3A] text-xs font-semibold px-3 py-1 rounded-full mb-3">
               {categoryLabel}
             </span>
+            {product.brand && (
+              <p className="text-xs font-semibold uppercase tracking-wide text-[#64748B] mb-1">
+                {product.brand}
+              </p>
+            )}
             <h1 className="text-2xl sm:text-3xl font-black text-[#0B1D3A] mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
               {product.name}
             </h1>
 
             {product.description && (
-              <p className="text-[#64748B] leading-relaxed mb-6">{product.description}</p>
+              <p className="text-[#64748B] leading-relaxed mb-4">{product.description}</p>
             )}
 
-            {/* Price */}
+            {product.bestFor && (
+              <p className="inline-block bg-[#FFFBEA] border border-yellow-200 text-[#0B1D3A] text-sm font-medium px-3 py-1.5 rounded-full mb-6">
+                {product.bestFor}
+              </p>
+            )}
+
+            {/* Price / Enquiry */}
             <div className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-5 mb-6">
-              {product.originalPrice && (
-                <div className="text-sm text-[#94A3B8] line-through">
-                  ₹{product.originalPrice.toLocaleString('en-IN')}
-                </div>
-              )}
-              {product.price ? (
-                <div className="text-3xl font-black text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
-                  ₹{product.price.toLocaleString('en-IN')}
-                </div>
+              {typeof product.price === 'number' ? (
+                <>
+                  {product.originalPrice && (
+                    <div className="text-sm text-[#94A3B8] line-through">
+                      ₹{product.originalPrice.toLocaleString('en-IN')}
+                    </div>
+                  )}
+                  <div className="text-3xl font-black text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
+                    ₹{product.price.toLocaleString('en-IN')}
+                  </div>
+                </>
               ) : (
-                <div className="text-xl font-bold text-[#64748B]">Price on Enquiry</div>
+                <>
+                  <div className="text-xl font-bold text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
+                    Price on Enquiry
+                  </div>
+                  <p className="text-[#64748B] text-sm mt-1">
+                    Tell us your requirement — we reply on WhatsApp.
+                  </p>
+                </>
               )}
               <button
                 onClick={() => setEnquireProduct(product)}
@@ -155,22 +186,7 @@ export function ProductDetail() {
 
       {/* Enquire Modal */}
       {enquireProduct && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setEnquireProduct(null)}>
-          <div className="bg-white rounded-2xl max-w-md w-full p-8" onClick={(e) => e.stopPropagation()}>
-            <h3 className="font-bold text-xl text-[#0B1D3A] mb-2" style={{ fontFamily: 'Outfit, sans-serif' }}>Enquire Now</h3>
-            <p className="text-[#64748B] text-sm mb-6 font-medium">{enquireProduct.name}</p>
-            <div className="space-y-3">
-              <input className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0B1D3A]" placeholder="Your Name" />
-              <input className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0B1D3A]" placeholder="Phone Number" />
-              <input className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0B1D3A]" placeholder="City / Location" />
-              <textarea className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0B1D3A] resize-none" rows={3} placeholder="Any specific requirements?" />
-            </div>
-            <div className="flex gap-3 mt-6">
-              <button onClick={() => setEnquireProduct(null)} className="flex-1 py-3 border border-[#E2E8F0] rounded-xl text-sm font-medium text-[#64748B] hover:border-[#0B1D3A] hover:text-[#0B1D3A] transition-colors">Cancel</button>
-              <button onClick={() => setEnquireProduct(null)} className="flex-1 py-3 bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] rounded-xl text-sm font-bold transition-colors">Send Enquiry</button>
-            </div>
-          </div>
-        </div>
+        <EnquiryModal product={enquireProduct} onClose={() => setEnquireProduct(null)} />
       )}
     </div>
   );
