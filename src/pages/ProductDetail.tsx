@@ -1,13 +1,10 @@
-import { useState } from 'react';
 import { useNav, type PageId } from '../context/NavigationContext';
 import { ProductCard } from '../components/ProductCard';
-import { EnquiryModal } from '../components/EnquiryModal';
 import { getById, getRelated, categoryLabels } from '../data/products';
-import type { Product, Spec } from '../data/products';
+import type { Spec } from '../data/products';
 
 export function ProductDetail() {
   const { navigate, selectedProductId, viewProduct } = useNav();
-  const [enquireProduct, setEnquireProduct] = useState<Product | null>(null);
 
   const product = selectedProductId ? getById(selectedProductId) : undefined;
 
@@ -143,7 +140,12 @@ export function ProductDetail() {
                 </>
               )}
               <button
-                onClick={() => setEnquireProduct(product)}
+                onClick={() =>
+                  navigate('contact', {
+                    subject: 'Product Enquiry',
+                    message: `I'm interested in ${product.name}`,
+                  })
+                }
                 className="mt-4 w-full py-3.5 bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] font-bold rounded-xl transition-all duration-200 hover:shadow-md"
               >
                 Enquire Now
@@ -183,11 +185,6 @@ export function ProductDetail() {
           </div>
         )}
       </div>
-
-      {/* Enquire Modal */}
-      {enquireProduct && (
-        <EnquiryModal product={enquireProduct} onClose={() => setEnquireProduct(null)} />
-      )}
     </div>
   );
 }

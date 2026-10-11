@@ -136,7 +136,10 @@ export function Navbar() {
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleNav('contact')}
+              onClick={() => {
+                navigate('contact', { subject: 'Get a Quote' });
+                setDropdownOpen(false);
+              }}
               className="hidden md:block px-5 py-2.5 bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] text-sm font-bold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#F5C518]/30"
             >
               Get Quote
@@ -183,7 +186,11 @@ export function Navbar() {
             ))}
             <div className="pt-2 px-0">
               <button
-                onClick={() => handleNav('contact')}
+                onClick={() => {
+                  navigate('contact', { subject: 'Get a Quote' });
+                  setMobileOpen(false);
+                  setDropdownOpen(false);
+                }}
                 className="w-full px-5 py-3 bg-[#F5C518] text-[#0B1D3A] text-sm font-bold rounded-xl"
               >
                 Get Quote

@@ -125,7 +125,7 @@ export function Home() {
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-2 bg-[#162B4D] text-[#F5C518] text-sm font-semibold px-4 py-2 rounded-full mb-8 border border-[#F5C518]/20">
-              <span className="w-2 h-2 bg-[#F5C518] rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-[#F5C518] rounded-full" />
               India's Trusted Power Brand
             </div>
 
@@ -133,15 +133,11 @@ export function Home() {
               className="font-black text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] mb-6"
               style={{
                 fontFamily: 'Outfit, sans-serif',
-                textShadow: '1px 1px 0 #d9e0e8, 2px 2px 0 #c0c9d4, 3px 3px 0 #a6b0bd, 4px 4px 0 #8b96a4, 5px 5px 0 #27344a, 6px 6px 0 #111827',
               }}
             >
               Power That <br />
               <span
                 className="text-[#F5C518]"
-                style={{
-                  textShadow: '1px 1px 0 #d9a900, 2px 2px 0 #bd9200, 3px 3px 0 #a17b00, 4px 4px 0 #765d08, 5px 5px 0 #27344a, 6px 6px 0 #111827',
-                }}
               >
                 Never
               </span>{' '}
