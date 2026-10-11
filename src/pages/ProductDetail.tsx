@@ -118,27 +118,12 @@ export function ProductDetail() {
 
             {/* Price / Enquiry */}
             <div className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-5 mb-6">
-              {typeof product.price === 'number' ? (
-                <>
-                  {product.originalPrice && (
-                    <div className="text-sm text-[#94A3B8] line-through">
-                      ₹{product.originalPrice.toLocaleString('en-IN')}
-                    </div>
-                  )}
-                  <div className="text-3xl font-black text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
-                    ₹{product.price.toLocaleString('en-IN')}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="text-xl font-bold text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
-                    Price on Enquiry
-                  </div>
-                  <p className="text-[#64748B] text-sm mt-1">
-                    Tell us your requirement and we reply on WhatsApp.
-                  </p>
-                </>
-              )}
+              <div className="text-xl font-bold text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
+                Price on Enquiry
+              </div>
+              <p className="text-[#64748B] text-sm mt-1">
+                Tell us your requirement and we reply on WhatsApp.
+              </p>
               <button
                 onClick={() =>
                   navigate('contact', {
@@ -177,7 +162,7 @@ export function ProductDetail() {
             <h2 className="text-2xl font-bold text-[#0B1D3A] mb-6" style={{ fontFamily: 'Outfit, sans-serif' }}>
               Related Products
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

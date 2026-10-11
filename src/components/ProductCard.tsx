@@ -13,14 +13,15 @@ export function ProductCard({ product }: ProductCardProps) {
   const { viewProduct } = useNav();
   const [imgSrc, setImgSrc] = useState(product.image);
   const [showEnquiry, setShowEnquiry] = useState(false);
+  const cardSpecs = product.specs.slice(0, 3);
 
   return (
     <>
       <div
         onClick={() => viewProduct(product.id)}
-        className="group bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+        className="group bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full"
       >
-        <div className="relative aspect-[4/3] bg-[#F1F5F9] overflow-hidden">
+        <div className="relative aspect-[4/3] bg-[#F1F5F9] overflow-hidden shrink-0">
           <img
             src={imgSrc}
             alt={product.name}
@@ -28,10 +29,10 @@ export function ProductCard({ product }: ProductCardProps) {
             onError={() => {
               if (imgSrc !== PLACEHOLDER_IMG) setImgSrc(PLACEHOLDER_IMG);
             }}
-            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           {product.badge && (
-            <span className="absolute top-3 left-3 bg-[#F5C518] text-[#0B1D3A] text-xs font-bold px-2.5 py-1 rounded-full">
+            <span className="absolute top-3 left-3 bg-[#F5C518] text-[#0B1D3A] text-xs font-bold px-2.5 py-1 rounded-full max-w-[70%] truncate">
               {product.badge}
             </span>
           )}
@@ -42,54 +43,40 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
 
-        <div className="p-5">
-          {product.brand && (
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#64748B] mb-1">
-              {product.brand}
-            </p>
-          )}
-          <h3 className="font-semibold text-[#0B1D3A] text-base mb-2 leading-snug line-clamp-2">
+        <div className="p-5 flex flex-col flex-1">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#64748B] mb-1 h-4 truncate">
+            {product.brand ?? '\u00A0'}
+          </p>
+          <h3 className="font-semibold text-[#0B1D3A] text-base mb-2 leading-snug line-clamp-2 min-h-[2.75rem]">
             {product.name}
           </h3>
 
-          {product.description && (
-            <p className="text-sm text-[#64748B] leading-relaxed mb-3 line-clamp-2">
-              {product.description}
-            </p>
-          )}
+          <p className="text-sm text-[#64748B] leading-relaxed mb-3 line-clamp-2 min-h-[2.625rem]">
+            {product.description ?? '\u00A0'}
+          </p>
 
           <div className="space-y-1.5 mb-3">
-            {product.specs.slice(0, 4).map((spec, i) => (
-              <div key={i} className="flex justify-between items-center gap-3 text-sm">
+            {cardSpecs.map((spec, i) => (
+              <div key={i} className="flex justify-between items-center gap-3 text-sm h-5">
                 <span className="text-[#64748B] shrink-0">{spec.label}</span>
-                <span className="text-[#0B1D3A] font-medium text-right line-clamp-1">{spec.value}</span>
+                <span className="text-[#0B1D3A] font-medium text-right truncate min-w-0 flex-1">{spec.value}</span>
               </div>
             ))}
           </div>
 
-          {product.bestFor && (
-            <p className="inline-block bg-[#FFFBEA] border border-yellow-200 text-[#0B1D3A] text-xs font-medium px-2.5 py-1 rounded-full mb-3">
-              {product.bestFor}
-            </p>
-          )}
+          <div className="min-h-[3rem] mb-3 flex items-start">
+            {product.bestFor ? (
+              <p className="inline-block bg-[#FFFBEA] border border-yellow-200 text-[#0B1D3A] text-xs font-medium px-2.5 py-1 rounded-full line-clamp-2">
+                {product.bestFor}
+              </p>
+            ) : (
+              <span aria-hidden="true" className="invisible text-xs px-2.5 py-1">
+                {'\u00A0'}
+              </span>
+            )}
+          </div>
 
-          {typeof product.price === 'number' && (
-            <div className="mb-3">
-              {product.originalPrice && (
-                <div className="text-sm text-[#94A3B8] line-through">
-                  ₹{product.originalPrice.toLocaleString('en-IN')}
-                </div>
-              )}
-              <div
-                className="text-xl font-black text-[#0B1D3A]"
-                style={{ fontFamily: 'Outfit, sans-serif' }}
-              >
-                ₹{product.price.toLocaleString('en-IN')}
-              </div>
-            </div>
-          )}
-
-          <div className="border-t border-[#F1F5F9] pt-4 flex items-center gap-2">
+          <div className="border-t border-[#F1F5F9] pt-4 mt-auto flex items-center gap-2">
             <button
               onClick={(e) => {
                 e.stopPropagation();
