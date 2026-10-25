@@ -51,31 +51,31 @@ export function Products() {
   }, [activeCategory, sort]);
 
   return (
-    <div className="pt-16 min-h-screen">
+    <div className="pt-14 sm:pt-16 min-h-screen">
       {/* Header */}
-      <div className="bg-[#0B1D3A] py-14">
+      <div className="bg-[#0B1D3A] py-8 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-[#64748B] text-sm mb-2">
             <button onClick={() => navigate('home')} className="hover:text-[#F5C518] transition-colors">Home</button>
             {' '}/{'  '}Products
           </p>
-          <h1 className="text-3xl sm:text-4xl font-black text-white mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <h1 className="text-2xl sm:text-4xl font-black text-white mb-2 sm:mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
             All Products
           </h1>
-          <p className="text-[#94A3B8]">
+          <p className="text-[#94A3B8] text-sm sm:text-base">
             {filtered.length} products found. Find the right power solution for your needs.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         {/* Quick category jump */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
           {Object.entries(categoryPageMap).map(([cat, page]) => (
             <button
               key={cat}
               onClick={() => navigate(page as PageId)}
-              className="px-4 py-2 text-sm font-medium rounded-xl border border-[#E2E8F0] text-[#0B1D3A] hover:border-[#0B1D3A] hover:bg-[#0B1D3A] hover:text-white transition-all duration-200"
+              className="px-3 sm:px-4 py-2 min-h-[36px] inline-flex items-center justify-center text-xs sm:text-sm font-medium rounded-xl border border-[#E2E8F0] text-[#0B1D3A] hover:border-[#0B1D3A] hover:bg-[#0B1D3A] hover:text-white transition-all duration-200"
             >
               Browse {categoryFilters.find((c) => c.value === cat)?.label ?? cat}
             </button>
@@ -83,13 +83,13 @@ export function Products() {
         </div>
 
         {/* Filters + Sort */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
           <div className="flex flex-wrap gap-2">
             {categoryFilters.map((f) => (
               <button
                 key={f.value}
                 onClick={() => setActiveCategory(f.value)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${activeCategory === f.value ? 'bg-[#0B1D3A] text-white' : 'bg-[#F7F9FC] text-[#64748B] hover:text-[#0B1D3A] border border-[#E2E8F0]'}`}
+                className={`px-3 sm:px-4 py-2 min-h-[36px] inline-flex items-center justify-center rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 ${activeCategory === f.value ? 'bg-[#0B1D3A] text-white' : 'bg-[#F7F9FC] text-[#64748B] hover:text-[#0B1D3A] border border-[#E2E8F0]'}`}
               >
                 {f.label}
               </button>
@@ -99,7 +99,7 @@ export function Products() {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
-            className="border border-[#E2E8F0] rounded-xl px-4 py-2.5 text-sm text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] bg-white self-start sm:self-auto"
+            className="border border-[#E2E8F0] rounded-xl px-4 py-2.5 text-xs sm:text-sm text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] bg-white self-start sm:self-auto"
           >
             {sortOptions.map((o) => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -108,7 +108,7 @@ export function Products() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 items-stretch">
           {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

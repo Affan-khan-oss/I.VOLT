@@ -56,9 +56,9 @@ export default function App() {
 
   return (
     <NavigationProvider>
-      <div className="flex flex-col min-h-screen bg-white">
+      <div className="flex flex-col min-h-screen bg-white overflow-x-clip">
         <Navbar />
-        <main className="flex-1">
+        <main className="flex-1 pb-14 sm:pb-0">
           <PageContent />
         </main>
         <Footer />

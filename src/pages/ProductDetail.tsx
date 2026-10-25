@@ -40,9 +40,9 @@ export function ProductDetail() {
   );
 
   return (
-    <div className="pt-16 min-h-screen">
+    <div className="pt-14 sm:pt-16 min-h-screen">
       {/* Header / Breadcrumb */}
-      <div className="bg-[#0B1D3A] py-14">
+      <div className="bg-[#0B1D3A] py-8 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-[#64748B] text-sm mb-4">
             <button onClick={() => navigate('home')} className="hover:text-[#F5C518] transition-colors">Home</button>
@@ -65,10 +65,10 @@ export function ProductDetail() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
           {/* Product image */}
-          <div className="relative aspect-[4/3] bg-[#F1F5F9] rounded-2xl overflow-hidden border border-[#E2E8F0]">
+          <div className="relative aspect-[4/3] max-h-[260px] sm:max-h-none w-full bg-[#F1F5F9] rounded-xl sm:rounded-2xl overflow-hidden border border-[#E2E8F0]">
             <img
               src={product.image}
               alt={product.name}
@@ -102,26 +102,26 @@ export function ProductDetail() {
                 {product.brand}
               </p>
             )}
-            <h1 className="text-2xl sm:text-3xl font-black text-[#0B1D3A] mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            <h1 className="text-xl sm:text-3xl font-black text-[#0B1D3A] mb-3 sm:mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
               {product.name}
             </h1>
 
             {product.description && (
-              <p className="text-[#64748B] leading-relaxed mb-4">{product.description}</p>
+              <p className="text-[#64748B] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">{product.description}</p>
             )}
 
             {product.bestFor && (
-              <p className="inline-block bg-[#FFFBEA] border border-yellow-200 text-[#0B1D3A] text-sm font-medium px-3 py-1.5 rounded-full mb-6">
+              <p className="inline-block bg-[#FFFBEA] border border-yellow-200 text-[#0B1D3A] text-xs sm:text-sm font-medium px-3 py-1 sm:py-1.5 rounded-full mb-4 sm:mb-6">
                 {product.bestFor}
               </p>
             )}
 
             {/* Price / Enquiry */}
-            <div className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-5 mb-6">
-              <div className="text-xl font-bold text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            <div className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-xl sm:rounded-2xl p-3 sm:p-5 mb-4 sm:mb-6">
+              <div className="text-lg sm:text-xl font-bold text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
                 Price on Enquiry
               </div>
-              <p className="text-[#64748B] text-sm mt-1">
+              <p className="text-[#64748B] text-xs sm:text-sm mt-1">
                 Tell us your requirement and we reply on WhatsApp.
               </p>
               <button
@@ -131,7 +131,7 @@ export function ProductDetail() {
                     message: `I'm interested in ${product.name}`,
                   })
                 }
-                className="mt-4 w-full py-3.5 bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] font-bold rounded-xl transition-all duration-200 hover:shadow-md"
+                className="mt-3 sm:mt-4 w-full py-2.5 sm:py-3.5 bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] font-bold text-sm sm:text-base rounded-xl transition-all duration-200 hover:shadow-md"
               >
                 Enquire Now
               </button>
@@ -141,13 +141,13 @@ export function ProductDetail() {
             <h2 className="font-semibold text-[#0B1D3A] mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
               Specifications
             </h2>
-            <div className="rounded-2xl border border-[#E2E8F0] overflow-hidden">
-              <table className="w-full text-sm">
+            <div className="rounded-xl sm:rounded-2xl border border-[#E2E8F0] overflow-hidden">
+              <table className="w-full text-xs sm:text-sm">
                 <tbody>
                   {detailSpecs.map((spec, i) => (
                     <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-[#F7F9FC]'}>
-                      <td className="px-4 py-3 text-[#64748B] w-1/2">{spec.label}</td>
-                      <td className="px-4 py-3 text-[#0B1D3A] font-medium">{spec.value}</td>
+                      <td className="px-3 sm:px-4 py-2 sm:py-3 text-[#64748B] w-1/2 break-words">{spec.label}</td>
+                      <td className="px-3 sm:px-4 py-2 sm:py-3 text-[#0B1D3A] font-medium break-words">{spec.value}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -158,11 +158,11 @@ export function ProductDetail() {
 
         {/* Related Products */}
         {related.length > 0 && (
-          <div className="mt-16">
-            <h2 className="text-2xl font-bold text-[#0B1D3A] mb-6" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <div className="mt-8 sm:mt-16">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0B1D3A] mb-4 sm:mb-6" style={{ fontFamily: 'Outfit, sans-serif' }}>
               Related Products
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 items-stretch">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

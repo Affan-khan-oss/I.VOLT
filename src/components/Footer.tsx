@@ -3,10 +3,40 @@ import { useNav, type PageId } from '../context/NavigationContext';
 export function Footer() {
   const { navigate } = useNav();
 
+  interface ContactItem {
+    icon: string;
+    text?: string;
+    href?: string;
+    lines?: { text: string; href: string; suffix?: string }[];
+  }
+
+  const contactItems: ContactItem[] = [
+    {
+      icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z',
+      text: 'Q74P+MGF, Loni Dehat, Uttar Pradesh, India',
+    },
+    {
+      icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z',
+      lines: [
+        { text: '+91 9212676908', href: 'tel:+919212676908' },
+        { text: '+91 9313918171', href: 'tel:+919313918171', suffix: ' (Sales)' },
+      ],
+    },
+    {
+      icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+      text: 'i.volt1212@gmail.com',
+      href: 'mailto:i.volt1212@gmail.com',
+    },
+    {
+      icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+      text: 'Mon–Sat: 9am – 7pm',
+    },
+  ];
+
   return (
     <footer className="bg-[#0B1D3A] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center mb-4">
@@ -17,7 +47,7 @@ export function Footer() {
                 VOLT
               </span>
             </div>
-            <p className="text-[#94A3B8] text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-[#94A3B8] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-xs">
               India's trusted power solutions brand delivering reliable UPS, inverters, batteries, and solar systems across the nation.
             </p>
             <div className="flex gap-2.5">
@@ -48,10 +78,10 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            <h4 className="font-semibold text-white mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider" style={{ fontFamily: 'Outfit, sans-serif' }}>
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {(
                 [
                   { label: 'Home', page: 'home' },
@@ -65,7 +95,7 @@ export function Footer() {
                 <li key={link.page}>
                   <button
                     onClick={() => navigate(link.page)}
-                    className="text-[#94A3B8] hover:text-[#F5C518] text-sm transition-colors duration-200"
+                    className="text-[#94A3B8] hover:text-[#F5C518] text-xs sm:text-sm transition-colors duration-200"
                   >
                     {link.label}
                   </button>
@@ -76,10 +106,10 @@ export function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            <h4 className="font-semibold text-white mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider" style={{ fontFamily: 'Outfit, sans-serif' }}>
               Products
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {(
                 [
                   { label: 'Online UPS', page: 'ups' },
@@ -93,7 +123,7 @@ export function Footer() {
                 <li key={i}>
                   <button
                     onClick={() => navigate(link.page)}
-                    className="text-[#94A3B8] hover:text-[#F5C518] text-sm transition-colors duration-200"
+                    className="text-[#94A3B8] hover:text-[#F5C518] text-xs sm:text-sm transition-colors duration-200"
                   >
                     {link.label}
                   </button>
@@ -104,40 +134,34 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            <h4 className="font-semibold text-white mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider" style={{ fontFamily: 'Outfit, sans-serif' }}>
               Contact Info
             </h4>
-            <ul className="space-y-4">
-              {[
-                {
-                  icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z',
-                  text: 'Q74P+MGF, Loni Dehat, Uttar Pradesh, India',
-                },
-                {
-                  icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z',
-                  text: '+91 9212676908',
-                  href: 'tel:+919212676908',
-                },
-                {
-                  icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
-                  text: 'i.volt92@gmail.com',
-                  href: 'mailto:i.volt92@gmail.com',
-                },
-                {
-                  icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
-                  text: 'Mon–Sat: 9am – 7pm',
-                },
-              ].map((item, i) => (
+            <ul className="space-y-3 sm:space-y-4">
+              {contactItems.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <svg className="w-4 h-4 text-[#F5C518] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                   </svg>
-                  {item.href ? (
-                    <a href={item.href} className="text-[#94A3B8] hover:text-[#F5C518] text-sm transition-colors duration-200">
+                  {item.lines ? (
+                    <div className="text-xs sm:text-sm">
+                      {item.lines.map((line) => (
+                        <div key={line.href}>
+                          <a href={line.href} className="text-[#94A3B8] hover:text-[#F5C518] hover:underline cursor-pointer text-xs sm:text-sm transition-colors duration-200">
+                            {line.text}
+                          </a>
+                          {line.suffix && (
+                            <span className="text-[#94A3B8] text-xs sm:text-sm">{line.suffix}</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : item.href ? (
+                    <a href={item.href} className="text-[#94A3B8] hover:text-[#F5C518] hover:underline cursor-pointer text-xs sm:text-sm transition-colors duration-200">
                       {item.text}
                     </a>
                   ) : (
-                    <span className="text-[#94A3B8] text-sm">{item.text}</span>
+                    <span className="text-[#94A3B8] text-xs sm:text-sm">{item.text}</span>
                   )}
                 </li>
               ))}
@@ -147,9 +171,9 @@ export function Footer() {
       </div>
 
       <div className="border-t border-[#162B4D]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-[#475569] text-sm">© 2026 I.VOLT Power Solutions. All rights reserved.</p>
-          <p className="text-[#475569] text-sm">Keeping India powered, always.</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-[#475569] text-xs">© 2026 I.VOLT Power Solutions. All rights reserved.</p>
+          <p className="text-[#475569] text-xs">Keeping India powered, always.</p>
         </div>
       </div>
     </footer>

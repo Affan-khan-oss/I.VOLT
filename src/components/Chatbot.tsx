@@ -202,7 +202,7 @@ export function Chatbot() {
 
   return (
     <>
-      <div className="fixed z-40 bottom-2 right-2 left-2 sm:left-auto sm:bottom-6 sm:right-6 flex flex-col items-end gap-3 sm:gap-4">
+      <div className="fixed z-40 bottom-3 right-3 left-2 sm:left-auto sm:bottom-6 sm:right-6 flex flex-col items-end gap-3 sm:gap-4">
         {open && (
           <section
             role="dialog"
@@ -378,14 +378,14 @@ export function Chatbot() {
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-label={open ? 'Close I.VOLT Assistant chat' : 'Open I.VOLT Assistant chat'}
-          className="w-14 h-14 rounded-full bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] shadow-xl hover:shadow-[#F5C518]/30 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shrink-0"
+          className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] shadow-xl hover:shadow-[#F5C518]/30 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shrink-0"
         >
           {open ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-[18px] h-[18px] sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-[18px] h-[18px] sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
