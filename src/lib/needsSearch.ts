@@ -1,15 +1,3 @@
-/**
- * Shared server/client heuristic: does this user message need live web search?
- *
- * Used by api/chat.ts to decide whether to attach Groq's browser_search tool,
- * and by Chatbot.tsx to decide whether the "Searching the web…" indicator is
- * honest after a long wait. Single source of truth — keep both in sync by
- * editing only here.
- *
- * Rule: search only for specific brands, models, sizes, specs, comparisons,
- * availability or market ranges. Simple follow-ups ("1 hour backup") and load
- * calculations ("3 fans + 2 lights") are answered from the catalog + formulas.
- */
 const BRANDS = [
   'apc',
   'luminous',

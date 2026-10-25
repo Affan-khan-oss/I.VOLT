@@ -1,5 +1,5 @@
-import { categoryLabels, products } from '../src/data/products';
-import { needsWebSearch } from '../src/lib/needsSearch';
+import { categoryLabels, products } from '../src/data/products.js';
+import { needsWebSearch } from '../src/lib/needsSearch.js';
 
 /**
  * POST /api/chat — Vercel serverless function (also reused by the Vite dev
