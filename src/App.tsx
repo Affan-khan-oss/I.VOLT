@@ -3,6 +3,7 @@ import { NavigationProvider, useNav } from './context/NavigationContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { LogoLoader } from './components/LogoLoader';
+import { Chatbot } from './components/Chatbot';
 import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { UPS } from './pages/UPS';
@@ -55,13 +56,14 @@ export default function App() {
 
   return (
     <NavigationProvider>
-      <div className="flex flex-col min-h-screen bg-white">
+      <div className="flex flex-col min-h-screen bg-white overflow-x-clip">
         <Navbar />
-        <main className="flex-1">
+        <main className="flex-1 pb-14 sm:pb-0">
           <PageContent />
         </main>
         <Footer />
       </div>
+      <Chatbot />
       {showLoader && <LogoLoader onComplete={completeLoading} />}
     </NavigationProvider>
   );

@@ -6,7 +6,7 @@ export function About() {
   const values = [
     {
       title: 'Reliability',
-      desc: 'Every I.VOLT product is designed to perform when it matters most — during power failures.',
+      desc: 'Every I.VOLT product is designed to perform when it matters most during power failures.',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -43,41 +43,41 @@ export function About() {
   ];
 
   return (
-    <div className="pt-16 min-h-screen">
+    <div className="pt-14 sm:pt-16 min-h-screen">
       {/* Header */}
-      <div className="bg-[#0B1D3A] py-14">
+      <div className="bg-[#0B1D3A] py-8 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-[#64748B] text-sm mb-2">
             <button onClick={() => navigate('home')} className="hover:text-[#F5C518] transition-colors">Home</button>
             {' '}/{'  '}About
           </p>
-          <h1 className="text-3xl sm:text-4xl font-black text-white mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <h1 className="text-2xl sm:text-4xl font-black text-white mb-2 sm:mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
             About I.VOLT
           </h1>
-          <p className="text-[#94A3B8] max-w-xl">
-            15 years of keeping India powered — our story, mission, and commitment to you.
+          <p className="text-[#94A3B8] text-sm sm:text-base max-w-xl">
+            15 years of keeping India powered our story, mission, and commitment to you.
           </p>
         </div>
       </div>
 
       {/* Mission */}
-      <section className="py-16 bg-white">
+      <section className="py-8 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 items-center">
             <div>
-              <div className="inline-block bg-[#F5C518]/15 text-[#B8941A] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+              <div className="inline-block bg-[#F5C518]/15 text-[#B8941A] text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-4">
                 Our Mission
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#0B1D3A] mb-5" style={{ fontFamily: 'Outfit, sans-serif' }}>
+              <h2 className="text-2xl sm:text-4xl font-bold text-[#0B1D3A] mb-3 sm:mb-5" style={{ fontFamily: 'Outfit, sans-serif' }}>
                 Powering a Brighter India
               </h2>
-              <p className="text-[#64748B] leading-relaxed mb-5">
+              <p className="text-[#64748B] text-sm sm:text-base leading-relaxed mb-4 sm:mb-5">
                 I.VOLT was born from a simple frustration: India's homes and businesses deserved better protection from power cuts. Founded in 2009 by a team of electrical engineers, we set out to build power solutions that were reliable, affordable, and backed by real service.
               </p>
-              <p className="text-[#64748B] leading-relaxed mb-8">
+              <p className="text-[#64748B] text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
                 Today, we are one of India's fastest-growing power solutions brands, with over 50,000 satisfied customers across 28 states. Every product we design carries a single promise: when the power goes out, we keep you running.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {values.slice(0, 2).map((v) => (
                   <div key={v.title} className="bg-[#F7F9FC] rounded-xl p-4 border border-[#E2E8F0]">
                     <div className="flex items-center gap-2 text-[#0B1D3A] mb-2">
@@ -93,11 +93,11 @@ export function About() {
               <img
                 src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=700&h=500&fit=crop&auto=format"
                 alt="I.VOLT facility"
-                className="rounded-2xl w-full object-cover aspect-[4/3] bg-[#F1F5F9]"
+                className="rounded-xl sm:rounded-2xl w-full object-cover aspect-[4/3] bg-[#F1F5F9]"
               />
-              <div className="absolute -bottom-6 -left-6 bg-[#0B1D3A] rounded-2xl p-5 shadow-xl">
-                <div className="text-3xl font-black text-[#F5C518]" style={{ fontFamily: 'Outfit, sans-serif' }}>15+</div>
-                <div className="text-white text-sm font-medium">Years of Excellence</div>
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 bg-[#0B1D3A] rounded-xl sm:rounded-2xl p-3 sm:p-5 shadow-xl">
+                <div className="text-2xl sm:text-3xl font-black text-[#F5C518]" style={{ fontFamily: 'Outfit, sans-serif' }}>15+</div>
+                <div className="text-white text-xs sm:text-sm font-medium">Years of Excellence</div>
               </div>
             </div>
           </div>
@@ -105,19 +105,19 @@ export function About() {
       </section>
 
       {/* Values */}
-      <section className="py-16 bg-[#F7F9FC]">
+      <section className="py-8 sm:py-16 bg-[#F7F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#0B1D3A] mb-8 text-center" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <h2 className="text-xl sm:text-3xl font-bold text-[#0B1D3A] mb-6 sm:mb-8 text-center" style={{ fontFamily: 'Outfit, sans-serif' }}>
             Our Core Values
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {values.map((v) => (
-              <div key={v.title} className="bg-white rounded-2xl p-6 border border-[#E2E8F0] hover:shadow-md transition-all duration-300">
-                <div className="w-10 h-10 rounded-xl bg-[#0B1D3A] flex items-center justify-center text-[#F5C518] mb-4">
+              <div key={v.title} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#E2E8F0] hover:shadow-md transition-all duration-300">
+                <div className="w-10 h-10 rounded-xl bg-[#0B1D3A] flex items-center justify-center text-[#F5C518] mb-3 sm:mb-4">
                   {v.icon}
                 </div>
-                <h3 className="font-bold text-[#0B1D3A] mb-2" style={{ fontFamily: 'Outfit, sans-serif' }}>{v.title}</h3>
-                <p className="text-[#64748B] text-sm leading-relaxed">{v.desc}</p>
+                <h3 className="font-bold text-[#0B1D3A] text-sm sm:text-base mb-2" style={{ fontFamily: 'Outfit, sans-serif' }}>{v.title}</h3>
+                <p className="text-[#64748B] text-xs sm:text-sm leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -125,12 +125,12 @@ export function About() {
       </section>
 
       {/* Facility */}
-      <section className="py-16 bg-[#F7F9FC]">
+      <section className="py-8 sm:py-16 bg-[#F7F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#0B1D3A] mb-10 text-center" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <h2 className="text-xl sm:text-3xl font-bold text-[#0B1D3A] mb-6 sm:mb-10 text-center" style={{ fontFamily: 'Outfit, sans-serif' }}>
             Manufacturing & Quality
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
             {[
               {
                 title: 'ISO 9001:2015 Certified',
@@ -148,13 +148,13 @@ export function About() {
                 img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=350&fit=crop&auto=format',
               },
             ].map((item) => (
-              <div key={item.title} className="bg-white rounded-2xl overflow-hidden border border-[#E2E8F0] hover:shadow-lg transition-all duration-300">
+              <div key={item.title} className="bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-[#E2E8F0] hover:shadow-lg transition-all duration-300">
                 <div className="aspect-video bg-[#F1F5F9] overflow-hidden">
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
                 </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-[#0B1D3A] mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>{item.title}</h3>
-                  <p className="text-[#64748B] text-sm">{item.desc}</p>
+                <div className="p-3 sm:p-5">
+                  <h3 className="font-semibold text-sm sm:text-base text-[#0B1D3A] mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>{item.title}</h3>
+                  <p className="text-[#64748B] text-xs sm:text-sm">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -163,15 +163,15 @@ export function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#0B1D3A] text-center">
+      <section className="py-8 sm:py-16 bg-[#0B1D3A] text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-black text-white mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 sm:mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
             Ready to Work with I.VOLT?
           </h2>
-          <p className="text-[#94A3B8] mb-8">Reach out to our team for product enquiries, bulk orders, or partnership opportunities.</p>
+          <p className="text-[#94A3B8] text-sm sm:text-base mb-6 sm:mb-8">Reach out to our team for product enquiries, bulk orders, or partnership opportunities.</p>
           <button
             onClick={() => navigate('contact')}
-            className="px-8 py-4 bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] font-bold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-[#F5C518]/20"
+            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-4 bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] font-bold text-sm sm:text-base rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-[#F5C518]/20"
           >
             Contact Us
           </button>

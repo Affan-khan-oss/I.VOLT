@@ -52,22 +52,22 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-[#E2E8F0]' : 'bg-white'}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
+        <div className="relative flex items-center justify-between h-14 md:h-16">
           {/* Logo */}
           <button
             onClick={() => handleNav('home')}
             className="flex items-center shrink-0"
           >
-            <span className="font-black text-2xl text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            <span className="font-black text-xl md:text-2xl text-[#0B1D3A]" style={{ fontFamily: 'Outfit, sans-serif' }}>
               I.
             </span>
-            <span className="font-black text-2xl text-[#F5C518]" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            <span className="font-black text-xl md:text-2xl text-[#F5C518]" style={{ fontFamily: 'Outfit, sans-serif' }}>
               VOLT
             </span>
           </button>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-0.5">
+          {/* Desktop Nav (centered) */}
+          <div className="hidden md:flex items-center justify-center gap-0.5 absolute left-1/2 -translate-x-1/2">
             <button
               onClick={() => handleNav('home')}
               className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${currentPage === 'home' ? 'text-[#0B1D3A] font-semibold' : 'text-[#64748B] hover:text-[#0B1D3A]'}`}
@@ -133,29 +133,20 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA + Hamburger */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => handleNav('contact')}
-              className="hidden md:block px-5 py-2.5 bg-[#F5C518] hover:bg-[#D4A517] text-[#0B1D3A] text-sm font-bold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#F5C518]/30"
-            >
-              Get Quote
-            </button>
-
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-lg text-[#0B1D3A] hover:bg-[#F7F9FC] transition-colors"
-              aria-label="Toggle menu"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {mobileOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
+          {/* Hamburger (mobile only) */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 rounded-lg text-[#0B1D3A] hover:bg-[#F7F9FC] transition-colors"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
 
         {/* Mobile Menu */}
@@ -176,19 +167,11 @@ export function Navbar() {
               <button
                 key={link.page}
                 onClick={() => handleNav(link.page)}
-                className={`block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ${currentPage === link.page ? 'bg-[#F7F9FC] text-[#0B1D3A] font-semibold' : 'text-[#64748B] hover:text-[#0B1D3A] hover:bg-[#F7F9FC]'}`}
+                className={`block w-full text-center px-4 py-2.5 rounded-lg text-base font-medium transition-colors duration-200 ${currentPage === link.page ? 'bg-[#F7F9FC] text-[#0B1D3A] font-semibold' : 'text-[#64748B] hover:text-[#0B1D3A] hover:bg-[#F7F9FC]'}`}
               >
                 {link.label}
               </button>
             ))}
-            <div className="pt-2 px-0">
-              <button
-                onClick={() => handleNav('contact')}
-                className="w-full px-5 py-3 bg-[#F5C518] text-[#0B1D3A] text-sm font-bold rounded-xl"
-              >
-                Get Quote
-              </button>
-            </div>
           </div>
         )}
       </div>

@@ -13,8 +13,8 @@ export function Inverter() {
   ];
 
   return (
-    <div className="pt-16 min-h-screen">
-      <div className="bg-[#0B1D3A] py-14">
+    <div className="pt-14 sm:pt-16 min-h-screen">
+      <div className="bg-[#0B1D3A] py-8 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-[#64748B] text-sm mb-2">
             <button onClick={() => navigate('home')} className="hover:text-[#F5C518] transition-colors">Home</button>
@@ -22,34 +22,34 @@ export function Inverter() {
             <button onClick={() => navigate('products')} className="hover:text-[#F5C518] transition-colors">Products</button>
             {' '}/{'  '}Inverters
           </p>
-          <h1 className="text-3xl sm:text-4xl font-black text-white mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <h1 className="text-2xl sm:text-4xl font-black text-white mb-2 sm:mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
             Inverters
           </h1>
-          <p className="text-[#94A3B8] max-w-xl">
-            Pure sine wave inverters delivering stable, clean power for every home and business load — from basics to heavy-duty.
+          <p className="text-[#94A3B8] text-sm sm:text-base max-w-xl">
+            Pure sine wave inverters delivering stable, clean power for every home and business load from basics to heavy-duty.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         {/* Capacity Guide */}
-        <div className="bg-[#F7F9FC] rounded-2xl p-6 mb-10 border border-[#E2E8F0]">
-          <h3 className="font-semibold text-[#0B1D3A] mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
+        <div className="bg-[#F7F9FC] rounded-xl sm:rounded-2xl p-3 sm:p-6 mb-6 sm:mb-10 border border-[#E2E8F0]">
+          <h3 className="font-semibold text-[#0B1D3A] text-sm sm:text-base mb-3 sm:mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
             Capacity Selection Guide
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             {capacityGuide.map((item) => (
-              <div key={item.range} className="bg-white rounded-xl p-4 border border-[#E2E8F0]">
-                <div className="font-bold text-[#F5C518] text-lg mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>
+              <div key={item.range} className="bg-white rounded-xl p-3 sm:p-4 border border-[#E2E8F0]">
+                <div className="font-bold text-[#F5C518] text-base sm:text-lg mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>
                   {item.range}
                 </div>
-                <div className="text-[#64748B] text-sm">{item.use}</div>
+                <div className="text-[#64748B] text-xs sm:text-sm">{item.use}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 items-stretch">
           {inverters.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
